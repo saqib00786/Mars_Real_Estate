@@ -3,13 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".detail.DetailMarsRealEstate">
+    tools:context=".overview.OverviewMarsRealEstate">
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/overviewID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="@string/detail_view_fragment"
+        android:text="@string/over_view_fragment"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/TestBtnId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/overviewID"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Test"
+        android:textAllCaps="false" />
 
 </RelativeLayout>

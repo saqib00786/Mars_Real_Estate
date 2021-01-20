@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/overviewMarsRealEstate2">
+
+    <fragment
+        android:id="@+id/detailMarsRealEstate"
+        android:name="com.example.marsrealestate.detail.DetailMarsRealEstate"
+        android:label="Detail"
+        tools:layout="@layout/fragment_overview_mars_real_estate">
+        <action
+            android:id="@+id/action_detailMarsRealEstate_to_overviewMarsRealEstate2"
+            app:destination="@id/overviewMarsRealEstate2"
+            app:popUpTo="@id/overviewMarsRealEstate2"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/overviewMarsRealEstate2"
+        android:name="com.example.marsrealestate.overview.OverviewMarsRealEstate"
+        android:label="Over View"
+        tools:layout="@layout/fragment_overview_mars_real_estate">
+        <action
+            android:id="@+id/action_overviewMarsRealEstate2_to_detailMarsRealEstate"
+            app:destination="@id/detailMarsRealEstate"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+</navigation>
