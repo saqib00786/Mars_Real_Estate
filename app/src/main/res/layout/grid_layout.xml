@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="property"
+            type="com.example.marsrealestate.network.MarsProperty" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/gridImgId"
+            android:layout_width="match_parent"
+            android:src="@drawable/mars_bg"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:padding="2dp"
+            app:img_Url="@{property.imgSrcUrl}"
+            android:layout_height="170dp"
+            />
+
+    </RelativeLayout>
+</layout>

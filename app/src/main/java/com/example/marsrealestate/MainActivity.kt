@@ -7,21 +7,24 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.*
-import kotlinx.android.synthetic.main.activity_main.*
+import com.example.marsrealestate.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
+    private lateinit var binding : ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment_container_viewId)
                 as NavHostFragment
         navController = navHostFragment.findNavController()
 
-        setSupportActionBar(app_bar_Id)
+        setSupportActionBar(binding.appBarId)
         setupActionBarWithNavController(navController)
 
     }
