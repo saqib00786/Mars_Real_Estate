@@ -1,24 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".detail.DetailMarsRealEstate">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/detail_image_viewId"
+    <data>
+
+        <variable
+            name="detailViewModel"
+            type="com.example.marsrealestate.detail.DetailMarsViewModel" />
+
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:src="@drawable/mars_bg"
-        android:scaleType="centerCrop"
-        android:layout_margin="4dp"
-        />
+        android:layout_height="match_parent"
+        tools:context=".detail.DetailMarsRealEstate">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="@string/detail_view_fragment"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/detail_image_viewId"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_margin="4dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/mars_bg"
+            app:img_Url="@{detailViewModel.selectedProperty.imgSrcUrl}" />
 
-</RelativeLayout>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/propertytypeID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detail_image_viewId"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="@{detailViewModel.displayPropertyType}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/propertytypeID"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="@{detailViewModel.displayPropertyPrice}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    </RelativeLayout>
+</layout>

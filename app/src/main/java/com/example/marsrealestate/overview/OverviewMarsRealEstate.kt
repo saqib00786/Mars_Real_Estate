@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.marsrealestate.PhotoGridAdapter
 import com.example.marsrealestate.databinding.*
 
@@ -32,7 +33,16 @@ class OverviewMarsRealEstate : Fragment() {
         mBinding!!.overviewModel = viewModel
         mBinding!!.lifecycleOwner = this
 
-        mBinding!!.recyclerViewID.adapter = PhotoGridAdapter()
+        mBinding!!.recyclerViewID.adapter = PhotoGridAdapter(PhotoGridAdapter.OnListener{
+          viewModel.displayPropertyDetail(it)
+        })
+
+        viewModel.navigateToDetailFragment.observe(viewLifecycleOwner){
+            if(null != it){
+                this.findNavController().navigate(OverviewMarsRealEstateDirections.actionOverviewMarsRealEstate2ToDetailMarsRealEstate(it))
+                viewModel.displayPropertyDetailCompelete()
+            }
+        }
 
        /* mBinding!!.TestBtnId.setOnClickListener {
             val action = OverviewMarsRealEstateDirections.actionOverviewMarsRealEstate2ToDetailMarsRealEstate()

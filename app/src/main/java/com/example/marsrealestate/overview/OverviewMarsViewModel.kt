@@ -18,6 +18,9 @@ class OverviewMarsViewModel : ViewModel() {
     private val _properties = MutableLiveData<List<MarsProperty>>()
     val properties: LiveData<List<MarsProperty>> = _properties
 
+    private val _navigateToDetailFragment = MutableLiveData<MarsProperty>()
+    val navigateToDetailFragment : LiveData<MarsProperty> = _navigateToDetailFragment
+
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
@@ -39,6 +42,14 @@ class OverviewMarsViewModel : ViewModel() {
                 _properties.value = ArrayList()
             }
         }
+    }
+
+    fun displayPropertyDetail(marsProperty: MarsProperty){
+        _navigateToDetailFragment.value = marsProperty
+    }
+
+    fun displayPropertyDetailCompelete(){
+        _navigateToDetailFragment.value = null
     }
 
     override fun onCleared() {
