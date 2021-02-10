@@ -12,4 +12,5 @@
     <string name="display_type">For %s</string>
     <string name="display_price_monthly">$%,.0f/month</string>
     <string name="display_price">$%,.0f</string>
+    <string name="show_all">Show All</string>
 </resources>
