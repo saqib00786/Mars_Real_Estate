@@ -3,30 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/overviewMarsRealEstate2">
+    app:startDestination="@id/fragmentOveview">
 
     <fragment
-        android:id="@+id/detailMarsRealEstate"
+        android:id="@+id/fragmentDetail"
         android:name="com.example.marsrealestate.detail.DetailMarsRealEstate"
         android:label="Detail"
         tools:layout="@layout/fragment_overview_mars_real_estate">
         <action
             android:id="@+id/action_detailMarsRealEstate_to_overviewMarsRealEstate2"
-            app:destination="@id/overviewMarsRealEstate2"
-            app:popUpTo="@id/overviewMarsRealEstate2"
+            app:destination="@id/fragmentOveview"
+            app:popUpTo="@id/fragmentOveview"
             app:popUpToInclusive="true" />
         <argument
             android:name="selectedProperty"
             app:argType="com.example.marsrealestate.network.MarsProperty" />
     </fragment>
     <fragment
-        android:id="@+id/overviewMarsRealEstate2"
+        android:id="@+id/fragmentOveview"
         android:name="com.example.marsrealestate.overview.OverviewMarsRealEstate"
         android:label="Over View"
         tools:layout="@layout/fragment_overview_mars_real_estate">
         <action
             android:id="@+id/action_overviewMarsRealEstate2_to_detailMarsRealEstate"
-            app:destination="@id/detailMarsRealEstate"
+            app:destination="@id/fragmentDetail"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"

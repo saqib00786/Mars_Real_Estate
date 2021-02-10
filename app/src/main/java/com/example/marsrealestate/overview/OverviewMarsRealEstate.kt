@@ -5,15 +5,18 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
 import com.example.marsrealestate.PhotoGridAdapter
 import com.example.marsrealestate.R
 import com.example.marsrealestate.databinding.*
 import com.example.marsrealestate.network.MarsApiFilter
+import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 
 class OverviewMarsRealEstate : Fragment() {
 
     private var mBinding: FragmentOverviewMarsRealEstateBinding? = null
     private val binding get() = mBinding
+
 
     private val viewModel: OverviewMarsViewModel by lazy {
         ViewModelProvider(this).get(OverviewMarsViewModel::class.java)
@@ -35,6 +38,10 @@ class OverviewMarsRealEstate : Fragment() {
         mBinding!!.recyclerViewID.adapter = PhotoGridAdapter(PhotoGridAdapter.OnListener {
             viewModel.displayPropertyDetail(it)
         })
+        mBinding!!.recyclerViewID.itemAnimator = SlideInUpAnimator().apply {
+            addDuration = 300
+        }
+
 
         viewModel.navigateToDetailFragment.observe(viewLifecycleOwner) {
             if (null != it) {
@@ -51,6 +58,8 @@ class OverviewMarsRealEstate : Fragment() {
              val action = OverviewMarsRealEstateDirections.actionOverviewMarsRealEstate2ToDetailMarsRealEstate()
              findNavController().navigate(action)
          }*/
+
+        setHasOptionsMenu(true)
         return binding?.root
     }
 
@@ -61,7 +70,7 @@ class OverviewMarsRealEstate : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         viewModel.updateFilter(
-            when(item.itemId){
+            when (item.itemId) {
                 R.id.showById -> MarsApiFilter.SHOW_BUY
                 R.id.showRentId -> MarsApiFilter.SHOW_RENT
                 else -> MarsApiFilter.SHOW_ALL
